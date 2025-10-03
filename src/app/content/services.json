@@ -1,0 +1,69 @@
+
+{
+    "pageTitle": "Our Services",
+    "pageDescription": "Discover how Rudram's data services can transform your business, from health checks to strategic advisory.",
+    "services": [
+        {
+            "id": "health-check",
+            "title": "Data Health Check",
+            "description": "A structured, two-week audit that uncovers where your data is messy, unreliable, or wasting money.",
+            "icon": "Stethoscope",
+            "keyPoints": [
+                { "text": "Review systems, data sources, and reporting processes", "icon": "Systems" },
+                { "text": "Scorecard across four areas: Sources, Quality, Reporting, Usage", "icon": "Scorecard" },
+                { "text": "Map how data flows and where it breaks", "icon": "DataFlow" },
+                { "text": "Deliver 3–5 quick wins", "icon": "QuickWins" }
+            ],
+            "valueProposition": "Clarity in 2 weeks. Know where your data stands and how to fix it.",
+            "cta": {
+                "text": "Get Your Health Report",
+                "href": "#contact"
+            }
+        },
+        {
+            "id": "data-apps",
+            "title": "Interactive Data Apps",
+            "description": "From static reports to live decision tools.",
+            "icon": "Dashboard",
+            "keyPoints": [
+                { "text": "Build simple apps tailored to your workflow", "icon": "Workflow" },
+                { "text": "Connect existing data sources for real-time answers", "icon": "RealTime" },
+                { "text": "Provide demo + training for adoption", "icon": "Training" },
+                { "text": "From reports you forget to tools you use every day.", "icon": "Tools" }
+            ],
+            "valueProposition": "From reports you forget to tools you use every day.",
+            "cta": {
+                "text": "See a Live Demo",
+                "href": "#contact"
+            }
+        },
+        {
+            "id": "strategy-advisory",
+            "title": "Data Strategy & Advisory",
+            "description": "Numbers don’t grow a business—decisions do.",
+            "icon": "Compass",
+            "keyPoints": [
+                { "text": "Identify KPIs that matter", "icon": "KPIs" },
+                { "text": "Translate data into clear recommendations", "icon": "Recommendations" },
+                { "text": "Provide monthly/quarterly advisory", "icon": "Advisory" },
+                { "text": "Build roadmap for scaling", "icon": "Roadmap" }
+            ],
+            "valueProposition": "Stop guessing. Start growing—with a data partner on call.",
+            "cta": {
+                "text": "Book Advisory Session",
+                "href": "#contact"
+            }
+        }
+    ],
+    "ctaBanner": {
+        "headline": "Ready to unlock clarity across your business data?",
+        "primaryCta": {
+            "text": "Book a Data Health Check",
+            "href": "#contact"
+        },
+        "secondaryCta": {
+            "text": "Get a Free Intro Call",
+            "href": "#contact"
+        }
+    }
+}

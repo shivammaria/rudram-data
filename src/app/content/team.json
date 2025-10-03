@@ -1,0 +1,34 @@
+
+{
+  "headline": "Our Story",
+  "subheadline": "Founded by data experts, driven by a passion for clarity.",
+  "story": {
+    "paragraph": "At Rudram, we believe data should be simple. Founded by Shivam and Parav, our mission is to cut through the noise of spreadsheets and complex reports. We empower businesses to see their data clearly, make smarter decisions, and unlock the growth hidden within their numbers. We're not just consultants; we're your dedicated data partners."
+  },
+  "members": [
+    {
+      "name": "Shivam",
+      "role": "Co-Founder & Data Strategist",
+      "bio": "Expert in transforming complex data into actionable business strategy.",
+      "image": {
+        "src": "https://picsum.photos/seed/shivam/400/400",
+        "alt": "Portrait of Shivam"
+      },
+      "linkedinUrl": "https://www.linkedin.com/company/rudram-data-solutions/"
+    },
+    {
+      "name": "Parav",
+      "role": "Co-Founder & Lead Data Engineer",
+      "bio": "Specializes in building robust, scalable data infrastructure from the ground up.",
+      "image": {
+        "src": "https://picsum.photos/seed/parav/400/400",
+        "alt": "Portrait of Parav"
+      },
+      "linkedinUrl": "https://www.linkedin.com/company/rudram-data-solutions/"
+    }
+  ],
+  "cta": {
+    "text": "Meet the Team",
+    "href": "#"
+  }
+}

@@ -1,0 +1,33 @@
+
+{
+    "hero": {
+      "headline": "Let’s Start with a Quick Chat",
+      "subheadline": "Whether you need a health check, a custom data app, or ongoing advisory—we’re here to help."
+    },
+    "form": {
+      "namePlaceholder": "Name",
+      "emailPlaceholder": "Email",
+      "businessPlaceholder": "Business Name",
+      "messagePlaceholder": "Your Message",
+      "submitText": "Send Message"
+    },
+    "directContact": {
+      "email": "hello@rudramdata.com"
+    },
+    "calendly": {
+      "headline": "Book Instantly",
+      "subheadline": "Schedule your Data Health Check or a free Intro Call directly on our calendar.",
+      "ctaText": "Book Now"
+    },
+    "ctaBanner": {
+      "headline": "Your data clarity starts here.",
+      "primaryCta": {
+        "text": "Book Your Health Check",
+        "href": "/contact"
+      },
+      "secondaryCta": {
+        "text": "Get a Free Intro Call",
+        "href": "/contact"
+      }
+    }
+  }

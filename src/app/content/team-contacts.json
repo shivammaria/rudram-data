@@ -1,0 +1,17 @@
+
+{
+  "email": "info@rudramdata.com",
+  "australia": {
+    "phone1": "+61 892884503",
+    "phone2": "+61 481334108",
+    "address": "Level 28/140 St George’s Terrace, Perth, Western Australia, 6000",
+    "mapUrl": "https://maps.app.goo.gl/MUtZRj34N4rUEv7G6"
+  },
+  "india": {
+    "phone": "+91-7090016000",
+    "address": "2nd Floor, B-1 Z Rishi Nagar, Ludhiana, Punjab, 141001"
+  },
+  "whatsapp": "61433983792",
+  "primaryCalendarLink": "https://calendly.com/rudramdata-info",
+  "introCallCalendarLink": "https://calendly.com/rudramdata-info"
+}

@@ -1,0 +1,41 @@
+
+{
+  "placeholderImages": [
+    {
+      "id": "rudram-founders",
+      "description": "A holographic portrait of the founders, Shivam & Parav.",
+      "imageUrl": "https://picsum.photos/seed/founders/400/400",
+      "imageHint": "founders portrait"
+    },
+    {
+      "id": "hero-1",
+      "description": "Futuristic data analytics interface on a holographic screen.",
+      "imageUrl": "/images/hero-1.jpg",
+      "imageHint": "data analytics"
+    },
+    {
+      "id": "hero-2",
+      "description": "A team collaborating around a holographic dashboard, showcasing business intelligence and teamwork.",
+      "imageUrl": "/images/hero-2.jpg",
+      "imageHint": "business team"
+    },
+    {
+      "id": "hero-3",
+      "description": "Abstract visualization of data flowing, representing the transformation from chaos to clarity.",
+      "imageUrl": "/images/hero-3.jpg",
+      "imageHint": "data abstract"
+    },
+    {
+      "id": "hero-4",
+      "description": "A single glowing node in a network, symbolizing a clear insight found within complex data.",
+      "imageUrl": "/images/hero-4.jpg",
+      "imageHint": "data insight"
+    },
+    {
+      "id": "hero-5",
+      "description": "Secure cloud data flow visualization with glowing particles.",
+      "imageUrl": "/images/hero-5.jpg",
+      "imageHint": "cloud data"
+    }
+  ]
+}

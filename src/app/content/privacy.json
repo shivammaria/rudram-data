@@ -1,0 +1,43 @@
+
+{
+  "lastUpdated": "2024-07-29",
+  "hero": {
+    "headline": "Your Data. Our Responsibility.",
+    "subheadline": "We are committed to protecting your data with the highest standards of security and transparency."
+  },
+  "sections": [
+    {
+      "id": "data-security",
+      "title": "Data Security",
+      "icon": "ShieldCheck",
+      "content": "Your data's security is paramount. We employ state-of-the-art encryption for data both in transit (using TLS/SSL) and at rest. Access to your data is strictly controlled through role-based access control (RBAC), ensuring that only authorized personnel can view or manage it. Regular security audits and vulnerability scans are conducted to proactively identify and mitigate potential threats."
+    },
+    {
+      "id": "privacy-policy",
+      "title": "Privacy Policy",
+      "icon": "Lock",
+      "content": "We collect information you provide to us directly, such as your name, email, and company details when you fill out a contact form. This information is used solely to communicate with you about our services. We do not sell, rent, or share your personal information with third parties for marketing purposes. All data is processed in secure environments, and we are committed to upholding your privacy rights."
+    },
+    {
+      "id": "data-ownership",
+      "title": "Data Ownership",
+      "icon": "Key",
+      "content": "You, the client, retain full ownership of your business data at all times. Rudram acts as a data processor on your behalf. Any data, dashboards, or applications we build for you are your intellectual property. Upon termination of our services, we ensure a complete and secure transfer of all data back to you and erase all copies from our systems."
+    },
+    {
+      "id": "confidentiality",
+      "title": "Confidentiality",
+      "icon": "FileLock",
+      "content": "Trust is the foundation of our partnership. We sign Non-Disclosure Agreements (NDAs) with every client before any sensitive data is exchanged. All Rudram team members are bound by strict confidentiality clauses in their contracts. Your business strategies, financial data, and operational details are treated with the utmost discretion."
+    },
+    {
+      "id": "compliance",
+      "title": "Compliance",
+      "icon": "Gavel",
+      "content": "We adhere to industry best practices for data management and privacy. While our operations are designed with a global client base in mind, we follow principles aligned with major data protection regulations like the GDPR. We are committed to staying current with legal and regulatory changes to ensure our compliance framework remains robust and effective."
+    }
+  ],
+  "cta": {
+    "text": "Download as PDF"
+  }
+}

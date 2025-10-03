@@ -1,0 +1,29 @@
+
+{
+  "headline": "The 3-Step Path to Data Clarity",
+  "subheadline": "Our proven process turns your data mess into a strategic asset.",
+  "steps": [
+    {
+      "id": 1,
+      "title": "Step 1: Data Health Check",
+      "description": "A two-week audit that shows where your data is strong, where it leaks time or money, and the quick fixes to get back control. Clarity in 2 weeks. Our Health Check is aligned with the Australian Bureau of Statistics (ABS) Data Quality Framework, giving you a trusted, industry-standard benchmark.",
+      "icon": "data-health-check"
+    },
+    {
+      "id": 2,
+      "title": "Step 2: Interactive Data Apps",
+      "description": "Lightweight apps built around your workflow—so you can explore data, ask questions, and get real-time answers without spreadsheets. From reports you forget to tools you use every day.",
+      "icon": "interactive-data-apps"
+    },
+    {
+      "id": 3,
+      "title": "Step 3: Data Strategy & Advisory",
+      "description": "Ongoing guidance to turn insights into action—defining the right KPIs, spotting opportunities, and building a roadmap for growth. Stop guessing. Start growing.",
+      "icon": "data-strategy-advisory"
+    }
+  ],
+  "cta": {
+    "text": "Start Your Journey",
+    "href": "#contact"
+  }
+}

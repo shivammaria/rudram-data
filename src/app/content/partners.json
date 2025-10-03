@@ -1,0 +1,22 @@
+
+{
+  "headline": "Our Trusted Cloud Partners",
+  "subheadline": "We build on the world’s leading platforms to deliver scalable, secure, and future-proof data solutions.",
+  "partners": [
+    {
+      "name": "AWS",
+      "logo": "aws",
+      "description": "Rudram leverages AWS cloud infrastructure to ensure scalable, secure, and high-performance data solutions for businesses of all sizes."
+    },
+    {
+      "name": "Microsoft",
+      "logo": "microsoft",
+      "description": "With Microsoft Azure, we enable advanced data integration, real-time analytics, and enterprise-grade security for your digital transformation."
+    },
+    {
+      "name": "Xero",
+      "logo": "xero",
+      "description": "We integrate Xero with custom data apps to give SMEs real-time financial insights, streamlined reporting, and automated compliance."
+    }
+  ]
+}

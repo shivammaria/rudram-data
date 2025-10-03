@@ -1,0 +1,31 @@
+
+{
+  "headline": "Why Choose Rudram",
+  "subheadline": "We're more than just data analysts. We're your partners in clarity.",
+  "features": [
+    {
+      "icon": "simple-first",
+      "title": "Simple First",
+      "description": "We speak your language and deliver quick wins, not jargon-filled reports."
+    },
+    {
+      "icon": "built-for-you",
+      "title": "Built for You",
+      "description": "Custom solutions that fit your business, using the tools you already own."
+    },
+    {
+      "icon": "results-oriented",
+      "title": "Results-Oriented",
+      "description": "Our focus is on actionable insights that directly impact your bottom line."
+    },
+    {
+      "icon": "future-proof",
+      "title": "Future-Proof",
+      "description": "We build scalable systems that grow with you, ensuring long-term value."
+    }
+  ],
+  "cta": {
+    "text": "Get Your Free Intro Call",
+    "href": "#contact"
+  }
+}

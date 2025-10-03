@@ -1,0 +1,275 @@
+
+{
+  "pageTitle": "Real Growth, Real Results",
+  "pageDescription": "We help companies save time, cut costs, and unlock clarity through smarter data.",
+  "stats": [
+    { "label": "Faster Reporting", "value": 80, "unit": "%" },
+    { "label": "Avg. Cost Savings", "value": 15, "unit": "%" },
+    { "label": "Client Growth Confidence", "value": 95, "unit": "%" }
+  ],
+  "featuredStory": {
+    "industry": "Retail Pilot",
+    "challenge": "Weekly reports took 12+ hours, across multiple complex spreadsheets.",
+    "solution": "Built a single interactive dashboard that automated data aggregation and visualization.",
+    "result": "Reporting time cut by over 80%.",
+    "visual": {
+      "before": { "title": "Chaotic Spreadsheets", "icon": "Sheet" },
+      "after": { "title": "Clean Dashboard", "icon": "LayoutDashboard" }
+    },
+    "roiGraph": {
+      "title": "Hours Saved Per Week",
+      "data": [
+        { "name": "Before", "value": 12 },
+        { "name": "After", "value": 2 }
+      ]
+    },
+    "cta": {
+      "text": "See How We Can Do This for You",
+      "href": "#contact"
+    }
+  },
+  "stories": [
+    {
+      "slug": "manufacturing-pilot",
+      "title": "Manufacturing Pilot",
+      "description": "Found $AUD 600,000/year in hidden material leakage costs during our Health Check.",
+      "content": "A mid-sized manufacturing client was struggling with inventory management. They knew there were inefficiencies but couldn't pinpoint them in their scattered data.\n\nOur Data Health Check connected their procurement, production, and waste management systems. We deployed a unified data model to track material flow from entry to exit.\n\nWe identified a consistent material leakage issue in one of their production lines, amounting to nearly $AUD 600,000 in annual losses. We built a simple, real-time dashboard to monitor this variance, allowing them to fix the process and prevent future losses.",
+      "image": "https://picsum.photos/seed/case1/1200/600",
+      "visual": {
+        "type": "graph",
+        "icon": "TrendingUp",
+        "data": {
+          "title": "Annual Savings",
+          "metric": "$AUD 600,000"
+        }
+      }
+    },
+    {
+      "slug": "real-estate-crm",
+      "title": "Real Estate CRM",
+      "description": "Cleaned & restructured 50k+ contacts for a fully automated marketing pipeline.",
+      "content": "A real estate agency had over 50,000 contacts in a messy, inconsistent CRM, making targeted marketing impossible and leading to missed opportunities.\n\nWe undertook a massive data cleaning and restructuring project. We standardized formats, removed thousands of duplicates, and enriched the data with property preferences and historical engagement data.\n\nThe result was a clean, segmented database that powered a new automated marketing pipeline, increasing lead qualification rates by 40% and boosting agent productivity.",
+      "image": "https://picsum.photos/seed/case2/1200/600",
+      "visual": {
+        "type": "flowchart",
+        "icon": "Users",
+        "data": {
+          "before": "Messy CRM",
+          "after": "Automated Pipeline"
+        }
+      }
+    },
+    {
+      "slug": "sme-finance-team",
+      "title": "SME Finance Team",
+      "description": "Replaced 20+ spreadsheets with one simple, powerful Data App.",
+      "content": "The finance team at a growing SME was drowning in over 20 different spreadsheets for financial reporting. The process was manual, error-prone, and took days each month, delaying critical financial insights.\n\nWe developed a centralized Data App that connected directly to their accounting software and other financial data sources. It automated all their standard reports—P&L, cash flow, and departmental budgets—into a single, interactive dashboard.\n\nThis reduced their monthly reporting time by 90% and completely eliminated manual data entry errors, freeing the team to focus on strategic financial analysis instead of data wrangling.",
+      "image": "https://picsum.photos/seed/case3/1200/600",
+      "visual": {
+        "type": "graph",
+        "icon": "PieChart",
+        "data": {
+          "title": "Manual Work",
+          "metric": "-90%"
+        }
+      }
+    },
+    {
+      "slug": "ecommerce-analytics",
+      "title": "E-commerce Analytics",
+      "description": "Boosted online sales by 25% with a custom sales and marketing dashboard.",
+      "content": "An e-commerce startup was struggling to understand customer behavior and marketing ROI. Their data was siloed in Shopify, Google Analytics, and social media platforms, making a unified view impossible.\n\nWe built a custom analytics dashboard that integrated all their key data sources. The dashboard provided a clear view of the complete customer journey, top-performing products, and marketing channel effectiveness.\n\nWith these new insights, they were able to optimize their ad spend and personalize promotions, leading to a 25% increase in sales within the first quarter and a significant improvement in marketing ROI.",
+      "image": "https://picsum.photos/seed/case4/1200/600",
+      "visual": {
+        "type": "graph",
+        "icon": "TrendingUp",
+        "data": {
+          "title": "Sales Increase",
+          "metric": "+25%"
+        }
+      }
+    }
+  ],
+  "roiSection": {
+    "headline": "The ROI of Clarity",
+    "charts": {
+      "timeSaved": {
+        "title": "Time Saved Across Clients",
+        "data": [
+          { "client": "Client A", "value": 60 },
+          { "client": "Client B", "value": 80 },
+          { "client": "Client C", "value": 75 }
+        ]
+      },
+      "costSavings": {
+        "title": "Hidden Cost Savings",
+        "data": [
+            { "month": "Jan", "savings": 0 },
+            { "month": "Feb", "savings": 5000 },
+            { "month": "Mar", "savings": 12000 },
+            { "month": "Apr", "savings": 25000 }
+        ]
+      },
+      "growthConfidence": {
+        "title": "Growth Confidence",
+        "before": 45,
+        "after": 95
+      }
+    }
+  },
+  "testimonials": [
+    {
+      "quote": "Reporting time was cut to just 3 hours, and decisions are now made the same day. A huge leap forward for us.",
+      "name": "Sarah Mitchell",
+      "role": "CFO",
+      "company": "Sydney Retailer (FMCG)",
+      "photo": "https://picsum.photos/seed/sarah/100/100"
+    },
+    {
+      "quote": "The 2-week Data Health Check uncovered $120K in annual cost savings. It paid for itself immediately.",
+      "name": "Mark Johnson",
+      "role": "Ops Head",
+      "company": "Melbourne Manufacturing SME",
+      "photo": "https://picsum.photos/seed/mark/100/100"
+    },
+    {
+      "quote": "We replaced 20+ outdated spreadsheets with one live dashboard. Our teams now act in minutes, not days.",
+      "name": "Emily Roberts",
+      "role": "Director",
+      "company": "Brisbane Tech Startup",
+      "photo": "https://picsum.photos/seed/emily/100/100"
+    },
+    {
+      "quote": "Forecast accuracy improved by 35%. As a finance firm, that level of clarity is everything.",
+      "name": "David Chen",
+      "role": "CFO",
+      "company": "Perth Financial Services",
+      "photo": "https://picsum.photos/seed/davidc/100/100"
+    },
+    {
+      "quote": "Integrating 6 different systems into one dashboard saved our staff 25 hours per week on manual data entry.",
+      "name": "Jessica Lee",
+      "role": "Clinical Manager",
+      "company": "Adelaide Healthcare Provider",
+      "photo": "https://picsum.photos/seed/jessical/100/100"
+    },
+    {
+      "quote": "Cleaning our CRM of 50k+ contacts enabled automated campaigns that increased qualified leads by 40%.",
+      "name": "Ben Carter",
+      "role": "Principal",
+      "company": "Sydney Real Estate Agency",
+      "photo": "https://picsum.photos/seed/benc/100/100"
+    },
+    {
+      "quote": "The interactive logistics app reduced missed deliveries by 22% and significantly boosted customer satisfaction.",
+      "name": "Fiona Green",
+      "role": "Logistics Director",
+      "company": "Melbourne Logistics Firm",
+      "photo": "https://picsum.photos/seed/fionag/100/100"
+    },
+    {
+      "quote": "Faculty can now monitor student progress in real-time, which has reduced our admin work by 60%.",
+      "name": "Dr. Alan Grant",
+      "role": "Dean of Academics",
+      "company": "Brisbane Education Institution",
+      "photo": "https://picsum.photos/seed/alang/100/100"
+    },
+    {
+      "quote": "Integrating our POS and warehouse data in real-time reduced stockouts by 50% and increased sales by 18%.",
+      "name": "Chloe White",
+      "role": "Retail Operations Manager",
+      "company": "Perth Retail Chain",
+      "photo": "https://picsum.photos/seed/chloew/100/100"
+    },
+    {
+      "quote": "A unified marketing dashboard helped us cut $70K in wasted ad spend in just six months. The ROI was immediate.",
+      "name": "Michael Brown",
+      "role": "Marketing Head",
+      "company": "Sydney SaaS Startup",
+      "photo": "https://picsum.photos/seed/michaelb/100/100"
+    },
+    {
+      "quote": "The financial control app detected project overruns early, saving us an average of 12% in project costs.",
+      "name": "Peter Jones",
+      "role": "Project Manager",
+      "company": "Melbourne Construction",
+      "photo": "https://picsum.photos/seed/peterj/100/100"
+    },
+    {
+      "quote": "Our monthly reports are now delivered in 2 hours instead of 10 days, freeing up the entire finance team.",
+      "name": "Anna Williams",
+      "role": "Finance Director",
+      "company": "Brisbane Food Distributor",
+      "photo": "https://picsum.photos/seed/annaw/100/100"
+    },
+    {
+      "quote": "Integrating our field sensor and ERP data reduced critical asset downtime by 15% and improved safety.",
+      "name": "Tom Harris",
+      "role": "Operations Chief",
+      "company": "Perth Mining Services",
+      "photo": "https://picsum.photos/seed/tomh/100/100"
+    },
+    {
+      "quote": "With our new energy monitoring dashboard, we identified efficiency gaps that are saving us $85K annually.",
+      "name": "Laura Davis",
+      "role": "Plant Manager",
+      "company": "Adelaide Manufacturing Plant",
+      "photo": "https://picsum.photos/seed/laurad/100/100"
+    },
+    {
+      "quote": "Automating our matter-level reporting improved data accuracy by 90% and freed our lawyers from tedious admin work.",
+      "name": "Steven Miller",
+      "role": "Managing Partner",
+      "company": "Sydney Legal Firm",
+      "photo": "https://picsum.photos/seed/stevenm/100/100"
+    },
+    {
+      "quote": "The live guest experience dashboard reduced our response time to 24 hours and raised satisfaction scores by 20%.",
+      "name": "Olivia Wilson",
+      "role": "General Manager",
+      "company": "Melbourne Hospitality Group",
+      "photo": "https://picsum.photos/seed/oliviaw/100/100"
+    },
+    {
+      "quote": "By creating a unified passenger and operations dashboard, we increased our ridership efficiency by 15%.",
+      "name": "Daniel Taylor",
+      "role": "Transport Planner",
+      "company": "Brisbane Transport Operator",
+      "photo": "https://picsum.photos/seed/danielt/100/100"
+    },
+    {
+      "quote": "Integrating satellite and farm data improved our crop yield prediction accuracy by an incredible 28%.",
+      "name": "Grace Moore",
+      "role": "Head Agronomist",
+      "company": "Perth Agribusiness",
+      "photo": "https://picsum.photos/seed/gracem/100/100"
+    },
+    {
+      "quote": "The donor impact dashboard improved transparency and helped us boost new donations by 18% this year.",
+      "name": "James Anderson",
+      "role": "CEO",
+      "company": "Adelaide Non-Profit",
+      "photo": "https://picsum.photos/seed/jamesa/100/100"
+    },
+    {
+      "quote": "Our portfolio founders cut their reporting time by 75%, allowing them to focus purely on scaling their businesses.",
+      "name": "Sophie Clark",
+      "role": "Program Director",
+      "company": "Sydney Startup Incubator",
+      "photo": "https://picsum.photos/seed/sophiec/100/100"
+    }
+  ],
+  "cta": {
+    "headline": "Your business could be our next success story.",
+    "primaryCta": {
+      "text": "Book Your Data Health Check",
+      "href": "#contact"
+    },
+    "secondaryCta": {
+      "text": "Explore Our Services",
+      "href": "/services"
+    }
+  }
+}
+
+    

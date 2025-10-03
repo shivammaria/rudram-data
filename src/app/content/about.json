@@ -1,0 +1,59 @@
+
+{
+    "hero": {
+      "headline": "Turning Complexity into Confidence",
+      "subheadline": "Businesses are drowning in data but starving for clarity. Rudram Data Solutions exists to change that."
+    },
+    "whoWeAre": {
+      "headline": "Who We Are",
+      "subheadline": "Founded to help businesses move from scattered spreadsheets to real-time decision systems.",
+      "founders": [
+        {
+          "name": "Shivam Maria",
+          "role": "Founder",
+          "bio": "“Enlightening your brain through knowledge and taking action not only helps in one’s daily growth but also takes you towards building a great character and wisdom.”",
+          "image": {
+            "src": "/images/shivam.jpg",
+            "alt": "Portrait of Shivam Maria"
+          },
+          "linkedinUrl": "https://www.linkedin.com/in/shivam-maria-167716251?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+        },
+        {
+          "name": "Parav Pathak",
+          "role": "Founder",
+          "bio": "“Continuous learning is not just a means of achieving success; it is the foundation of personal fulfillment and the gateway to living a life of purpose.”",
+          "image": {
+            "src": "/images/Parav.jpg",
+            "alt": "Portrait of Parav Pathak"
+          },
+          "linkedinUrl": "https://www.linkedin.com/in/paravpathak?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+        }
+      ]
+    },
+    "ourVision": {
+      "headline": "Our Vision",
+      "statement": "To make data a daily advantage, not a daily headache—for all kinds of businesses."
+    },
+    "ourValues": {
+      "headline": "Our Values",
+      "subheadline": "The principles that guide our work and partnerships.",
+      "values": [
+        {
+          "title": "Clarity over Complexity",
+          "description": "We believe in simple, powerful solutions. No jargon, no black boxes—just clear insights that everyone can understand and act on.",
+          "icon": "Clarity"
+        },
+        {
+          "title": "Long-term Partnerships",
+          "description": "We are more than consultants; we are your dedicated data partners. Your success is our success, and we're in it for the long haul.",
+          "icon": "Partnership"
+        },
+        {
+          "title": "Privacy & Trust",
+          "description": "Your data is your most valuable asset. We treat it with the highest level of security, confidentiality, and integrity. Your trust is our foundation.",
+          "icon": "Trust"
+        }
+      ]
+    }
+  }
+  

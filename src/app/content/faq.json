@@ -1,0 +1,42 @@
+
+{
+    "headline": "Killing Objections",
+    "subheadline": "Your questions, answered with clarity.",
+    "faqs": [
+      {
+        "question": "What if I don’t have much data yet?",
+        "answer": "No problem at all. Many of our clients start with just a handful of spreadsheets or basic reports. We scale our solutions to your current level and show you the simplest starting point. Think of it like building blocks—you don’t need a mountain of data to start making smarter decisions.",
+        "icon": "data-volume"
+      },
+      {
+        "question": "Do I need new software?",
+        "answer": "No new software required. We work with what you already use—Excel, Google Sheets, CRMs, ERPs, or custom databases. Our focus is making your current setup smarter, faster, and easier to use. If upgrades are ever needed, we guide you step-by-step—never forcing you into expensive tools.",
+        "icon": "software"
+      },
+      {
+        "question": "Is this too advanced for my small business?",
+        "answer": "Not at all. Rudram is built for businesses of every size. Whether you’re a 5-person startup or a mid-sized company, we begin simple—quick wins that save you time and money—then scale as you grow. You’ll never feel overwhelmed; we’ll always keep things in plain language, not jargon.",
+        "icon": "business-size"
+      },
+      {
+        "question": "How quickly can we see results?",
+        "answer": "Fast. With our Data Health Check, you’ll see actionable insights in just 2 weeks. Many clients experience immediate time savings once we simplify reporting. Larger transformations (like Data Apps or strategy rollouts) are phased in so you see value from day one.",
+        "icon": "results-speed"
+      },
+      {
+        "question": "Is my company’s data safe with you?",
+        "answer": "Yes. Data security and confidentiality are non-negotiable for us. We sign NDAs with every client, follow strict access controls, and ensure your information never leaves secure environments. Your trust is our priority—we treat your data as if it were our own.",
+        "icon": "data-security"
+      },
+      {
+        "question": "Do you offer ongoing support?",
+        "answer": "Absolutely. Beyond audits and apps, Rudram is designed as a long-term data partner. We provide advisory sessions, ongoing system upgrades, and continuous support—so you’re never left alone after setup. Think of us as your ‘data team on call.’",
+        "icon": "support"
+      }
+    ],
+    "cta": {
+      "headline": "Still have questions?",
+      "buttonText": "Book Your Free Intro Call",
+      "href": "#contact"
+    }
+}

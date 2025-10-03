@@ -1,0 +1,53 @@
+
+{
+  "slides": [
+    {
+      "id": "clarity",
+      "headline": "From Data Chaos to Data Clarity",
+      "subheadline": "We help businesses turn scattered spreadsheets and reports into simple tools and smarter decisions.",
+      "imageUrl": "/images/s1.jpg",
+      "imageDescription": "Slider image 1",
+      "imageHint": "data analytics",
+      "cta": {
+        "primary": {
+          "text": "Learn more about data health check"
+        },
+        "secondary": {
+          "text": "See How It Works"
+        }
+      }
+    },
+    {
+      "id": "ai-apps",
+      "headline": "Data & AI Apps solutions",
+      "subheadline": "We build customized data+AI Apps for a business to maximize ROI's",
+      "imageUrl": "/images/s2.jpg",
+      "imageDescription": "Slider image 2",
+      "imageHint": "business team",
+      "cta": {
+        "primary": {
+          "text": "Explore AI Solutions"
+        },
+        "secondary": {
+          "text": "View Case Studies"
+        }
+      }
+    },
+    {
+      "id": "automation",
+      "headline": "Data+AI Automation",
+      "subheadline": "We implement smart AI and data strategies to automate processes which turns raw information into continous, self-optimizing decisions and actions.",
+      "imageUrl": "/images/s4.jpg",
+      "imageDescription": "Slider image 3",
+      "imageHint": "data abstract",
+      "cta": {
+        "primary": {
+          "text": "Automate Your Business"
+        },
+        "secondary": {
+          "text": "Learn More"
+        }
+      }
+    }
+  ]
+}

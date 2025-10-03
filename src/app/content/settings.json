@@ -1,0 +1,22 @@
+
+{
+  "appName": "Rudram",
+  "companyName": "Rudram Data Solutions",
+  "tagline": "Delivering game-changing end-to-end data solutions and enabling your business transformation through artificial intelligence.",
+  "contact": {
+    "email": "info@rudramdata.com",
+    "phone": "+61 892884503"
+  },
+  "socials": {
+    "twitter": "#",
+    "linkedin": "https://www.linkedin.com/company/rudram-data-solutions/",
+    "github": "#",
+    "youtube": "#"
+  },
+  "cta": {
+    "primary": {
+      "text": "Book a Data Health Check",
+      "href": "#contact"
+    }
+  }
+}
