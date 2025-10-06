@@ -15,6 +15,9 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: 'Rudram Data Solutions',
   description: 'From Data Chaos to Data Clarity',
+  icons: {
+    icon: '/images/logo.png',
+  },
 };
 
 export default function RootLayout({
@@ -38,3 +41,4 @@ export default function RootLayout({
     </html>
   );
 }
+
