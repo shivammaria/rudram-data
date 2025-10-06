@@ -1,7 +1,7 @@
 "use server";
 
 import { z } from 'zod';
-import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
 import teamContacts from './content/team-contacts.json';
 import settings from './content/settings.json';
 
@@ -58,47 +58,63 @@ export async function submitHealthCheck(prevState: HealthCheckFormState, formDat
     consent_timestamp: new Date().toISOString(),
   };
 
-  const resendApiKey = process.env.RESEND_API_KEY;
+  const { GMAIL_USER, GMAIL_APP_PASSWORD } = process.env;
 
-  if (!resendApiKey) {
-    console.error("Resend API key is missing. Please add it to your .env file.");
-    // Fallback: Log the data if email fails
+  if (!GMAIL_USER || !GMAIL_APP_PASSWORD) {
+    console.error("Gmail credentials are missing. Please add GMAIL_USER and GMAIL_APP_PASSWORD to your .env file.");
     console.log("New Data Health Check Request (Email disabled):", JSON.stringify(payload, null, 2));
     return {
       message: "The email service is currently unavailable, but we have saved your request. Our team will get in touch shortly.",
-      success: true, // We still want to show success to the user.
+      success: true,
     };
   }
 
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: GMAIL_USER,
+      pass: GMAIL_APP_PASSWORD,
+    },
+  });
+
+  const mailOptions = {
+    from: `"${settings.appName}" <${GMAIL_USER}>`,
+    to: teamContacts.email,
+    subject: `New Data Health Check Request from ${payload.company}`,
+    text: `
+      New Request Details:
+      
+      Name: ${payload.name}
+      Email: ${payload.email}
+      Company: ${payload.company}
+      Phone: ${payload.phone || 'Not provided'}
+      Business Size: ${payload.businessSize}
+      Service ID: ${payload.serviceId}
+      Contact Method: ${payload.contactChannel}
+      Message: ${payload.message || 'No message'}
+      
+      Consent to contact was given at ${payload.consent_timestamp}.
+    `,
+    html: `
+      <h3>New Request Details:</h3>
+      <ul>
+        <li><strong>Name:</strong> ${payload.name}</li>
+        <li><strong>Email:</strong> ${payload.email}</li>
+        <li><strong>Company:</strong> ${payload.company}</li>
+        <li><strong>Phone:</strong> ${payload.phone || 'Not provided'}</li>
+        <li><strong>Business Size:</strong> ${payload.businessSize}</li>
+        <li><strong>Service ID:</strong> ${payload.serviceId}</li>
+        <li><strong>Contact Method:</strong> ${payload.contactChannel}</li>
+        <li><strong>Message:</strong> ${payload.message || 'No message'}</li>
+      </ul>
+      <p><em>Consent to contact was given at ${payload.consent_timestamp}.</em></p>
+    `
+  };
+
   try {
-    const resend = new Resend(resendApiKey);
-    const { data, error } = await resend.emails.send({
-      from: `${settings.appName} <noreply@resend.dev>`,
-      to: [teamContacts.email],
-      subject: `New Data Health Check Request from ${payload.company}`,
-      text: `
-        New Request Details:
-        
-        Name: ${payload.name}
-        Email: ${payload.email}
-        Company: ${payload.company}
-        Phone: ${payload.phone || 'Not provided'}
-        Business Size: ${payload.businessSize}
-        Service ID: ${payload.serviceId}
-        Contact Method: ${payload.contactChannel}
-        Message: ${payload.message || 'No message'}
-        
-        Consent to contact was given at ${payload.consent_timestamp}.
-      `,
-    });
-
-    if (error) {
-      throw new Error(error.message);
-    }
-
+    await transporter.sendMail(mailOptions);
   } catch (error) {
     console.error("Failed to send email:", error);
-    // Fallback: Log the data if email fails
     console.log("New Data Health Check Request (Email Failed):", JSON.stringify(payload, null, 2));
 
     return {
