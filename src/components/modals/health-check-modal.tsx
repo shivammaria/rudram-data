@@ -10,6 +10,8 @@ import { Confirmation } from './confirmation';
 import { LiveDemoForm } from './live-demo-form';
 import { DemoChannelSelect } from './demo-channel-select';
 import { ScrollArea } from '../ui/scroll-area';
+import { submitDemoRequest } from '@/app/actions';
+import { Loader2 } from 'lucide-react';
 
 export type Service = {
     id: string;
@@ -35,6 +37,7 @@ export type ContactChannel = "whatsapp" | "call" | "email" | "calendly";
 export function HealthCheckModal({ children, defaultServiceId }: { children: React.ReactNode, defaultServiceId?: string }) {
     const [open, setOpen] = useState(false);
     const [step, setStep] = useState(1);
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const [formData, setFormData] = useState<Partial<FormData>>({ serviceId: defaultServiceId });
     const [channel, setChannel] = useState<ContactChannel | null>(null);
 
@@ -66,9 +69,22 @@ export function HealthCheckModal({ children, defaultServiceId }: { children: Rea
             setStep(1);
             setFormData({ serviceId: defaultServiceId });
             setChannel(null);
+            setIsSubmitting(false);
         }, 300);
     }
     
+    const handleDemoSelect = async (selectedChannel: string) => {
+        setIsSubmitting(true);
+        try {
+            await submitDemoRequest(formData);
+            handleClose();
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setIsSubmitting(false);
+        }
+    }
+
     const renderContent = () => {
         if (serviceId === 'data-apps') {
             switch (step) {
@@ -84,12 +100,17 @@ export function HealthCheckModal({ children, defaultServiceId }: { children: Rea
                     );
                 case 2:
                     return (
-                        <DemoChannelSelect
-                            onChannelSelect={(selectedChannel) => {
-                                handleClose();
-                            }}
-                            onBack={() => setStep(1)}
-                        />
+                        <div className="relative">
+                            {isSubmitting && (
+                                <div className="absolute inset-0 z-50 flex items-center justify-center bg-background/50 backdrop-blur-sm rounded-xl">
+                                    <Loader2 className="h-10 w-10 animate-spin text-primary" />
+                                </div>
+                            )}
+                            <DemoChannelSelect
+                                onChannelSelect={handleDemoSelect}
+                                onBack={() => setStep(1)}
+                            />
+                        </div>
                     )
                 default:
                     return <p>Something went wrong.</p>;

@@ -8,11 +8,13 @@ import { StartJourneyForm, type StartJourneyFormValues } from './start-journey-f
 import { Button } from '../ui/button';
 import { FreeIntroCallModal } from './free-intro-call-modal';
 import { ScrollArea } from '../ui/scroll-area';
+import { submitStartJourney } from '@/app/actions';
+import { Loader2 } from 'lucide-react';
 
 export function StartJourneyModal({ children }: { children: React.ReactNode }) {
     const [open, setOpen] = useState(false);
     const [step, setStep] = useState(1);
-    const [formData, setFormData] = useState<Partial<StartJourneyFormValues>>({});
+    const [isSubmitting, setIsSubmitting] = useState(false);
     
     const title = ctaContent.start_journey.title;
     const description = ctaContent.start_journey.description;
@@ -21,14 +23,20 @@ export function StartJourneyModal({ children }: { children: React.ReactNode }) {
         setOpen(false);
         setTimeout(() => {
             setStep(1);
-            setFormData({});
+            setIsSubmitting(false);
         }, 300);
     }
 
-    const handleFormSubmit = (data: StartJourneyFormValues) => {
-        console.log("Start Journey Data:", data);
-        setFormData(data);
-        setStep(2);
+    const handleFormSubmit = async (data: StartJourneyFormValues) => {
+        setIsSubmitting(true);
+        try {
+            await submitStartJourney(data);
+            setStep(2);
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
     
     return (
@@ -44,10 +52,17 @@ export function StartJourneyModal({ children }: { children: React.ReactNode }) {
                     <ScrollArea className="flex-grow px-6">
                         <div className="py-8 pr-2">
                             {step === 1 && (
-                                <StartJourneyForm
-                                    onFormSubmit={handleFormSubmit}
-                                    onCancel={handleClose}
-                                />
+                                <div className="relative">
+                                    {isSubmitting && (
+                                        <div className="absolute inset-0 z-50 flex items-center justify-center bg-background/50 backdrop-blur-sm rounded-xl">
+                                            <Loader2 className="h-10 w-10 animate-spin text-primary" />
+                                        </div>
+                                    )}
+                                    <StartJourneyForm
+                                        onFormSubmit={handleFormSubmit}
+                                        onCancel={handleClose}
+                                    />
+                                </div>
                             )}
 
                             {step === 2 && (
