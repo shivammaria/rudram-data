@@ -1,10 +1,12 @@
-
 "use server";
 
 import { z } from 'zod';
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
 import teamContacts from './content/team-contacts.json';
 import settings from './content/settings.json';
+
+// Initialize Resend with the API key from environment variables
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 // --- Schemas ---
 
@@ -31,7 +33,7 @@ const StartJourneySchema = z.object({
   name: z.string().min(2),
   email: z.string().email(),
   company: z.string().min(2),
-  exploringAreas: z.string(), // Joined string from array
+  exploringAreas: z.string(),
   goal: z.string().min(5),
 });
 
@@ -48,38 +50,30 @@ export type FormState = {
   success: boolean;
 };
 
-// --- Helper: Send Email ---
+// --- Helper: Send Email via Resend ---
 
-async function sendMailNotification({ subject, bodyHtml, bodyText }: { subject: string, bodyHtml: string, bodyText: string }) {
-  const { GMAIL_USER, GMAIL_APP_PASSWORD } = process.env;
-
-  if (!GMAIL_USER || !GMAIL_APP_PASSWORD) {
-    console.warn("Email credentials missing. Logged to console instead.");
-    console.log(`[EMAIL SIMULATION] Subject: ${subject}\n${bodyText}`);
-    return true; // Simulate success in dev
+async function sendEmailNotification({ subject, bodyHtml }: { subject: string, bodyHtml: string }) {
+  if (!process.env.RESEND_API_KEY) {
+    console.warn("RESEND_API_KEY is missing. Email skipped. Content:", bodyHtml);
+    return true; // Return true to simulate success in development without a key
   }
 
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: GMAIL_USER,
-      pass: GMAIL_APP_PASSWORD,
-    },
-  });
-
-  const mailOptions = {
-    from: `"${settings.appName}" <${GMAIL_USER}>`,
-    to: teamContacts.email,
-    subject,
-    text: bodyText,
-    html: bodyHtml,
-  };
-
   try {
-    await transporter.sendMail(mailOptions);
+    const { data, error } = await resend.emails.send({
+      from: `${settings.appName} <onboarding@resend.dev>`, // Note: Replace with your verified domain in production
+      to: [teamContacts.email],
+      subject: subject,
+      html: bodyHtml,
+    });
+
+    if (error) {
+      console.error("Resend error:", error);
+      return false;
+    }
+
     return true;
-  } catch (error) {
-    console.error("Mail error:", error);
+  } catch (err) {
+    console.error("Failed to send email:", err);
     return false;
   }
 }
@@ -103,13 +97,26 @@ export async function submitHealthCheck(prevState: any, formData: FormData): Pro
     return { message: "Validation failed.", errors: validated.error.flatten().fieldErrors, success: false };
   }
 
-  const success = await sendMailNotification({
-    subject: `New Data Health Check Request: ${validated.data.company}`,
-    bodyText: `Name: ${validated.data.name}\nEmail: ${validated.data.email}\nService: ${validated.data.serviceId}\nChannel: ${validated.data.contactChannel}\nMessage: ${validated.data.message || 'N/A'}`,
-    bodyHtml: `<h3>Health Check Request</h3><ul><li><strong>Name:</strong> ${validated.data.name}</li><li><strong>Email:</strong> ${validated.data.email}</li><li><strong>Company:</strong> ${validated.data.company}</li><li><strong>Service:</strong> ${validated.data.serviceId}</li></ul><p><strong>Message:</strong> ${validated.data.message || 'N/A'}</p>`,
+  const success = await sendEmailNotification({
+    subject: `[Health Check] ${validated.data.company} - ${validated.data.name}`,
+    bodyHtml: `
+      <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
+        <h2 style="color: #f59e0b;">New Data Health Check Request</h2>
+        <p><strong>Name:</strong> ${validated.data.name}</p>
+        <p><strong>Email:</strong> ${validated.data.email}</p>
+        <p><strong>Company:</strong> ${validated.data.company}</p>
+        <p><strong>Business Size:</strong> ${validated.data.businessSize}</p>
+        <p><strong>Service:</strong> ${validated.data.serviceId}</p>
+        <p><strong>Preferred Channel:</strong> ${validated.data.contactChannel}</p>
+        <p><strong>Message:</strong> ${validated.data.message || 'No additional message.'}</p>
+      </div>
+    `,
   });
 
-  return { message: success ? "Success! We'll be in touch." : "Service error, but we've noted your request.", success: true };
+  return { 
+    message: success ? "Success! We'll be in touch shortly." : "We've noted your request, but our email notification failed. We will check our logs.", 
+    success: true 
+  };
 }
 
 export async function submitContactForm(prevState: any, formData: FormData): Promise<FormState> {
@@ -121,13 +128,22 @@ export async function submitContactForm(prevState: any, formData: FormData): Pro
   });
 
   if (!validated.success) {
-    return { message: "Check your fields.", errors: validated.error.flatten().fieldErrors, success: false };
+    return { message: "Please check your inputs.", errors: validated.error.flatten().fieldErrors, success: false };
   }
 
-  const success = await sendMailNotification({
-    subject: `New Contact Inquiry: ${validated.data.name}`,
-    bodyText: `Name: ${validated.data.name}\nEmail: ${validated.data.email}\nCompany: ${validated.data.company}\nMessage: ${validated.data.message}`,
-    bodyHtml: `<h3>Contact Inquiry</h3><p><strong>From:</strong> ${validated.data.name} (${validated.data.company})</p><p><strong>Email:</strong> ${validated.data.email}</p><p><strong>Message:</strong><br/>${validated.data.message}</p>`,
+  const success = await sendEmailNotification({
+    subject: `[Contact Inquiry] From ${validated.data.name}`,
+    bodyHtml: `
+      <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
+        <h2 style="color: #f59e0b;">New General Inquiry</h2>
+        <p><strong>Name:</strong> ${validated.data.name}</p>
+        <p><strong>Email:</strong> ${validated.data.email}</p>
+        <p><strong>Company:</strong> ${validated.data.company}</p>
+        <hr />
+        <p><strong>Message:</strong></p>
+        <p style="white-space: pre-wrap;">${validated.data.message}</p>
+      </div>
+    `,
   });
 
   return { message: success ? "Message sent successfully!" : "Error sending message.", success: true };
@@ -141,24 +157,38 @@ export async function submitStartJourney(data: any): Promise<FormState> {
 
   if (!validated.success) return { message: "Invalid data.", success: false };
 
-  const success = await sendMailNotification({
-    subject: `Path to Clarity: New Journey Started by ${validated.data.company}`,
-    bodyText: `Name: ${validated.data.name}\nEmail: ${validated.data.email}\nAreas: ${validated.data.exploringAreas}\nGoal: ${validated.data.goal}`,
-    bodyHtml: `<h3>New Journey Request</h3><p><strong>Client:</strong> ${validated.data.name} (${validated.data.company})</p><p><strong>Exploring:</strong> ${validated.data.exploringAreas}</p><p><strong>Goal:</strong> ${validated.data.goal}</p>`,
+  const success = await sendEmailNotification({
+    subject: `[Journey Started] ${validated.data.company}`,
+    bodyHtml: `
+      <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
+        <h2 style="color: #f59e0b;">Path to Clarity: New Journey</h2>
+        <p><strong>Client:</strong> ${validated.data.name} (${validated.data.company})</p>
+        <p><strong>Email:</strong> ${validated.data.email}</p>
+        <p><strong>Areas of Interest:</strong> ${validated.data.exploringAreas}</p>
+        <p><strong>Business Goal:</strong> ${validated.data.goal}</p>
+      </div>
+    `,
   });
 
-  return { message: "Journey started!", success: true };
+  return { message: "Journey started! Check your email for updates.", success: true };
 }
 
 export async function submitDemoRequest(data: any): Promise<FormState> {
   const validated = DemoRequestSchema.safeParse(data);
   if (!validated.success) return { message: "Invalid data.", success: false };
 
-  const success = await sendMailNotification({
-    subject: `Demo Requested: ${validated.data.demoType}`,
-    bodyText: `Name: ${validated.data.name}\nEmail: ${validated.data.email}\nCompany: ${validated.data.company}\nDemo: ${validated.data.demoType}`,
-    bodyHtml: `<h3>Interactive App Demo Request</h3><p><strong>Name:</strong> ${validated.data.name}</p><p><strong>Email:</strong> ${validated.data.email}</p><p><strong>Demo Type:</strong> ${validated.data.demoType}</p>`,
+  const success = await sendEmailNotification({
+    subject: `[Demo Request] ${validated.data.demoType} - ${validated.data.company}`,
+    bodyHtml: `
+      <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
+        <h2 style="color: #f59e0b;">Demo Requested</h2>
+        <p><strong>Name:</strong> ${validated.data.name}</p>
+        <p><strong>Email:</strong> ${validated.data.email}</p>
+        <p><strong>Company:</strong> ${validated.data.company}</p>
+        <p><strong>Requested Demo:</strong> ${validated.data.demoType}</p>
+      </div>
+    `,
   });
 
-  return { message: "Demo request sent!", success: true };
+  return { message: "Demo request received! We'll send the link to your inbox.", success: true };
 }
