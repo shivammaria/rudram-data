@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Calendar, Mail, Linkedin, MapPin, Loader2 } from "lucide-react";
+import Link from "next/link";
 import contactContent from "@/app/content/contact.json";
 import settings from "@/app/content/settings.json";
 import teamContacts from "@/app/content/team-contacts.json";
@@ -50,11 +51,9 @@ export default function ContactForm() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div className="space-y-2">
                             <Input name="name" required placeholder={contactContent.form.namePlaceholder} className="bg-background/40 border-primary/20 focus:ring-primary h-12" />
-                            {state.errors?.name && <p className="text-xs text-destructive">{state.errors.name[0]}</p>}
                         </div>
                         <div className="space-y-2">
                             <Input name="email" type="email" required placeholder={contactContent.form.emailPlaceholder} className="bg-background/40 border-primary/20 focus:ring-primary h-12" />
-                            {state.errors?.email && <p className="text-xs text-destructive">{state.errors.email[0]}</p>}
                         </div>
                     </div>
                     <div className="space-y-2">
