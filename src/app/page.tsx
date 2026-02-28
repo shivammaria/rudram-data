@@ -6,6 +6,7 @@ import Faq from "@/components/sections/faq";
 import CaseStories from "@/components/sections/home/case-stories";
 import TestimonialCarousel from "@/components/sections/case-studies/testimonial-carousel";
 import CloudPartners from "@/components/sections/home/cloud-partners";
+import ClientsSlider from "@/components/sections/home/clients-slider";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
             style={{ maskImage: 'radial-gradient(ellipse at center, white 20%, transparent 70%)' }}
           ></div>
         </div>
+        <ClientsSlider />
         <ClarityPath />
         <CaseStories />
         <TestimonialCarousel />

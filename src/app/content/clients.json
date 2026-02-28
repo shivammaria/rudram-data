@@ -1,0 +1,11 @@
+
+{
+  "headline": "Companies we have worked for",
+  "clients": [
+    { "name": "Gunit", "logo": "/images/gunit.png" },
+    { "name": "Infrawa", "logo": "/images/infrawa.png" },
+    { "name": "MinRes", "logo": "/images/minres.png" },
+    { "name": "Mitsui", "logo": "/images/mitsui.png" },
+    { "name": "Thinkdone", "logo": "/images/thinkdone.png" }
+  ]
+}
