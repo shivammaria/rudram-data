@@ -35,7 +35,10 @@ export default function ClientsSlider() {
             {content.clients.map((client, index) => (
               <CarouselItem key={index} className="pl-4 md:pl-8 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/5">
                 <div className="p-2">
-                  <div className="group relative h-48 w-full flex items-center justify-center bg-white rounded-2xl p-6 shadow-xl border border-primary/20 transition-all duration-500 hover:scale-105 hover:shadow-primary/40 hover:border-primary/50">
+                  <div className="group relative h-52 w-full flex items-center justify-center bg-white rounded-2xl p-8 shadow-xl border border-primary/20 transition-all duration-500 hover:scale-105 hover:shadow-primary/40 hover:border-primary/50 overflow-hidden">
+                    {/* Subtle background pattern to help white logos pop */}
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.02)_100%)] pointer-events-none" />
+                    
                     <div className="relative w-full h-full flex items-center justify-center">
                       <Image
                         src={client.logo}

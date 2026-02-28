@@ -18,15 +18,13 @@ We use [Resend](https://resend.com/) for reliable email delivery to your Google 
 ### 2. Repository Migration
 To point this project to a new Git repository:
 1. **Check current remote:** `git remote -v`
-2. **Remove old remote (if it exists):** `git remote remove origin`
-3. **Add new remote:** `git remote add origin <YOUR_NEW_REPO_URL>`
-4. **Push code:** `git push -u origin main`
+2. **Add new remote:** `git remote add origin <YOUR_NEW_REPO_URL>` (If you get "remote origin already exists", use `git remote set-url origin <URL>`)
+3. **Push code:** `git push -u origin main`
 
 ## Features & UI Updates
-- **Email System:** All forms (Contact, Health Check, Journey, Demo) are now wired to send automated queries to `info@rudramdata.com` using Resend.
-- **Forms:** Fully responsive "block-style" forms with custom scrollbars and Server Action processing.
+- **Clients Slider:** Auto-scrolling section with large, professionally framed containers for `gunit`, `infrawa`, `minres`, `mitsui`, and `thinkdone`.
+- **Email System:** All forms (Contact, Health Check, Journey, Demo) are wired to send automated queries to `info@rudramdata.com` using Resend.
 - **Hero Section:** Autoplay set to 10s with professional "Data Chaos to Clarity" storytelling.
-- **Partners:** AWS logo professionally framed using `/images/aws.png`.
 - **Branding:** "Rudram" integrated into all client testimonials.
 - **CTAs:** Unified site-wide banners to a single "Contact Us" journey.
 
