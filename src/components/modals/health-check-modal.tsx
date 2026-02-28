@@ -86,7 +86,6 @@ export function HealthCheckModal({ children, defaultServiceId }: { children: Rea
                     return (
                         <DemoChannelSelect
                             onChannelSelect={(selectedChannel) => {
-                                // For now, we just close. Later we can add confirmation.
                                 handleClose();
                             }}
                             onBack={() => setStep(1)}
@@ -97,7 +96,6 @@ export function HealthCheckModal({ children, defaultServiceId }: { children: Rea
             }
         }
         
-        // Default flow for 'health-check', 'strategy-advisory', etc.
         switch (step) {
             case 1:
                 return (
@@ -140,14 +138,14 @@ export function HealthCheckModal({ children, defaultServiceId }: { children: Rea
             else setOpen(true);
         }}>
             <DialogTrigger asChild>{children}</DialogTrigger>
-            <DialogContent className="glass-morphic w-[95vw] max-w-lg rounded-lg md:w-full max-h-[90vh] flex flex-col" onInteractOutside={handleClose}>
-                <DialogHeader className="flex-shrink-0 px-6 pt-6">
-                    <DialogTitle className="text-2xl text-primary text-glow">{title}</DialogTitle>
-                    <DialogDescription>{description}</DialogDescription>
-                </DialogHeader>
-                <div className="flex-grow overflow-y-auto px-6">
-                    <ScrollArea className="h-full">
-                       <div className="py-6">
+            <DialogContent className="glass-morphic w-[calc(100vw-2rem)] max-w-lg rounded-xl p-0 overflow-hidden border-primary/20 shadow-2xl" onInteractOutside={handleClose}>
+                <div className="flex flex-col max-h-[90vh]">
+                    <DialogHeader className="px-6 pt-8 pb-4 text-left border-b border-primary/10">
+                        <DialogTitle className="text-2xl md:text-3xl font-bold text-primary text-glow leading-tight">{title}</DialogTitle>
+                        <DialogDescription className="text-muted-foreground mt-2 leading-relaxed">{description}</DialogDescription>
+                    </DialogHeader>
+                    <ScrollArea className="flex-grow px-6">
+                       <div className="py-8 pr-2">
                            {renderContent()}
                        </div>
                     </ScrollArea>

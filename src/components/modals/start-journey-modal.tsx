@@ -9,7 +9,6 @@ import { Button } from '../ui/button';
 import { FreeIntroCallModal } from './free-intro-call-modal';
 import { ScrollArea } from '../ui/scroll-area';
 
-
 export function StartJourneyModal({ children }: { children: React.ReactNode }) {
     const [open, setOpen] = useState(false);
     const [step, setStep] = useState(1);
@@ -27,25 +26,23 @@ export function StartJourneyModal({ children }: { children: React.ReactNode }) {
     }
 
     const handleFormSubmit = (data: StartJourneyFormValues) => {
-        // In a real app, you would handle the submission here (e.g., send to a backend).
-        // For now, we'll just log it and show a success message.
         console.log("Start Journey Data:", data);
-        setFormData(data); // Save data
-        setStep(2); // Move to a confirmation/thank you step
+        setFormData(data);
+        setStep(2);
     };
     
     return (
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>{children}</DialogTrigger>
-            <DialogContent className="glass-morphic w-[95vw] max-w-lg rounded-lg md:w-full max-h-[90vh] flex flex-col" onInteractOutside={handleClose}>
-                <DialogHeader className="flex-shrink-0 px-6 pt-6">
-                    <DialogTitle className="text-2xl text-primary text-glow">{title}</DialogTitle>
-                    <DialogDescription>{description}</DialogDescription>
-                </DialogHeader>
-                
-                <div className="flex-grow overflow-y-auto px-6">
-                    <ScrollArea className="h-full">
-                        <div className="py-6">
+            <DialogContent className="glass-morphic w-[calc(100vw-2rem)] max-w-lg rounded-xl p-0 overflow-hidden border-primary/20 shadow-2xl" onInteractOutside={handleClose}>
+                <div className="flex flex-col max-h-[90vh]">
+                    <DialogHeader className="px-6 pt-8 pb-4 text-left border-b border-primary/10">
+                        <DialogTitle className="text-2xl md:text-3xl font-bold text-primary text-glow leading-tight">{title}</DialogTitle>
+                        <DialogDescription className="text-muted-foreground mt-2 leading-relaxed">{description}</DialogDescription>
+                    </DialogHeader>
+                    
+                    <ScrollArea className="flex-grow px-6">
+                        <div className="py-8 pr-2">
                             {step === 1 && (
                                 <StartJourneyForm
                                     onFormSubmit={handleFormSubmit}
@@ -54,19 +51,26 @@ export function StartJourneyModal({ children }: { children: React.ReactNode }) {
                             )}
 
                             {step === 2 && (
-                                <div className="space-y-6 text-center py-8">
-                                    <h3 className="text-xl font-semibold">Thank You!</h3>
-                                    <p className="text-muted-foreground">
-                                        We've received your request. We'll send your personalized roadmap preview within 48 hours.
-                                    </p>
-                                    <p className="text-muted-foreground">
-                                        Want to pick a time to chat now?
-                                    </p>
-                                    <div className="flex justify-center gap-4 pt-4">
+                                <div className="space-y-8 text-center py-8">
+                                    <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto">
+                                        <svg className="h-10 w-10 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                        </svg>
+                                    </div>
+                                    <div className="space-y-4">
+                                        <h3 className="text-3xl font-bold text-foreground">Thank You!</h3>
+                                        <p className="text-muted-foreground text-lg leading-relaxed px-4">
+                                            We've received your request. We'll send your personalized roadmap preview within 48 hours.
+                                        </p>
+                                        <p className="text-muted-foreground font-medium">
+                                            Want to pick a time to chat now?
+                                        </p>
+                                    </div>
+                                    <div className="flex flex-col gap-4 px-6">
                                         <FreeIntroCallModal>
-                                            <Button className="btn-glow">Book Quick Call</Button>
+                                            <Button size="lg" className="w-full btn-glow h-14 text-lg">Book Quick Call</Button>
                                         </FreeIntroCallModal>
-                                         <Button onClick={handleClose} variant="outline">
+                                         <Button onClick={handleClose} variant="outline" className="w-full h-14 text-lg glass-morphic">
                                             Close
                                         </Button>
                                     </div>

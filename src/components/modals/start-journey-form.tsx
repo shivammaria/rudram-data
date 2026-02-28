@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useForm } from 'react-hook-form';
@@ -15,7 +16,7 @@ const areas = [
   { id: 'sales-ops', label: 'Sales Ops' },
   { id: 'finance', label: 'Finance' },
   { id: 'crm', label: 'CRM' },
-  { id: 'data-infrastructure', label: 'Data Infrastructure' },
+  { id: 'data-infrastructure', label: 'Data Infra' },
   { id: 'other', label: 'Other' },
 ];
 
@@ -24,10 +25,10 @@ const FormSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email." }),
   company: z.string().min(2, { message: "Company name must be at least 2 characters." }),
   exploringAreas: z.array(z.string()).refine(value => value.some(item => item), {
-    message: "You have to select at least one area.",
+    message: "Select at least one area.",
   }),
-  goal: z.string().min(10, { message: "Please briefly describe your goal (min. 10 characters)." }),
-  consent: z.boolean().refine(val => val === true, { message: "You must consent to be contacted." }),
+  goal: z.string().min(10, { message: "Describe your goal (min. 10 chars)." }),
+  consent: z.boolean().refine(val => val === true, { message: "Consent is required." }),
 });
 
 export type StartJourneyFormValues = z.infer<typeof FormSchema>;
@@ -52,27 +53,27 @@ export function StartJourneyForm({ onFormSubmit, onCancel }: StartJourneyFormPro
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onFormSubmit)} className="space-y-4">
-                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <form onSubmit={form.handleSubmit(onFormSubmit)} className="space-y-6">
+                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <FormField control={form.control} name="name" render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Name *</FormLabel>
-                            <FormControl><Input {...field} className="bg-background/50 border-primary/20 focus:bg-background focus:ring-primary" /></FormControl>
+                            <FormLabel className="font-semibold text-foreground">Name *</FormLabel>
+                            <FormControl><Input {...field} className="bg-background/40 border-primary/20 focus:ring-primary h-12" /></FormControl>
                             <FormMessage />
                         </FormItem>
                     )} />
                     <FormField control={form.control} name="email" render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Email *</FormLabel>
-                            <FormControl><Input {...field} className="bg-background/50 border-primary/20 focus:bg-background focus:ring-primary" /></FormControl>
+                            <FormLabel className="font-semibold text-foreground">Email *</FormLabel>
+                            <FormControl><Input {...field} className="bg-background/40 border-primary/20 focus:ring-primary h-12" /></FormControl>
                             <FormMessage />
                         </FormItem>
                     )} />
                 </div>
                  <FormField control={form.control} name="company" render={({ field }) => (
                     <FormItem>
-                        <FormLabel>Company *</FormLabel>
-                        <FormControl><Input {...field} className="bg-background/50 border-primary/20 focus:bg-background focus:ring-primary" /></FormControl>
+                        <FormLabel className="font-semibold text-foreground">Company *</FormLabel>
+                        <FormControl><Input {...field} className="bg-background/40 border-primary/20 focus:ring-primary h-12" /></FormControl>
                         <FormMessage />
                     </FormItem>
                 )} />
@@ -83,9 +84,9 @@ export function StartJourneyForm({ onFormSubmit, onCancel }: StartJourneyFormPro
                   render={() => (
                     <FormItem>
                       <div className="mb-4">
-                        <FormLabel className="text-base">Which area are you exploring? *</FormLabel>
+                        <FormLabel className="text-base font-semibold text-foreground">Which area are you exploring? *</FormLabel>
                       </div>
-                      <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 bg-primary/5 p-4 rounded-xl border border-primary/10">
                       {areas.map((item) => (
                         <FormField
                           key={item.id}
@@ -95,7 +96,7 @@ export function StartJourneyForm({ onFormSubmit, onCancel }: StartJourneyFormPro
                             return (
                               <FormItem
                                 key={item.id}
-                                className="flex flex-row items-start space-x-3 space-y-0"
+                                className="flex flex-row items-center space-x-3 space-y-0"
                               >
                                 <FormControl>
                                   <Checkbox
@@ -111,7 +112,7 @@ export function StartJourneyForm({ onFormSubmit, onCancel }: StartJourneyFormPro
                                     }}
                                   />
                                 </FormControl>
-                                <FormLabel className="font-normal">
+                                <FormLabel className="font-normal text-sm md:text-base cursor-pointer">
                                   {item.label}
                                 </FormLabel>
                               </FormItem>
@@ -127,28 +128,28 @@ export function StartJourneyForm({ onFormSubmit, onCancel }: StartJourneyFormPro
 
                 <FormField control={form.control} name="goal" render={({ field }) => (
                     <FormItem>
-                        <FormLabel>Briefly, what is your main goal? *</FormLabel>
-                        <FormControl><Textarea {...field} className="bg-background/50 border-primary/20 focus:bg-background focus:ring-primary" placeholder="e.g., Automate financial reports, improve sales tracking..." /></FormControl>
+                        <FormLabel className="font-semibold text-foreground">Briefly, what is your main goal? *</FormLabel>
+                        <FormControl><Textarea {...field} className="bg-background/40 border-primary/20 focus:ring-primary min-h-[120px] resize-none" placeholder="e.g., Automate financial reports, improve sales tracking..." /></FormControl>
                         <FormMessage />
                     </FormItem>
                 )} />
                 
                 <FormField control={form.control} name="consent" render={({ field }) => (
-                    <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4 glass-morphic">
+                    <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-xl border border-primary/20 p-5 glass-morphic">
                         <FormControl><Checkbox checked={field.value} onCheckedChange={field.onChange} /></FormControl>
                         <div className="space-y-1 leading-none">
-                            <FormLabel>I consent to Rudram contacting me about this request.</FormLabel>
-                             <p className="text-sm text-muted-foreground">
-                                You can view our <Link href="/privacy" className="underline hover:text-primary">Privacy Policy</Link>.
+                            <FormLabel className="text-sm font-semibold text-foreground">I consent to Rudram contacting me about this request.</FormLabel>
+                             <p className="text-xs text-muted-foreground mt-1">
+                                View our <Link href="/privacy" className="underline hover:text-primary transition-colors">Privacy Policy</Link>.
                             </p>
                             <FormMessage />
                         </div>
                     </FormItem>
                 )} />
 
-                <div className="flex justify-end gap-4 pt-4">
-                    <Button type="button" variant="outline" onClick={onCancel}>Cancel</Button>
-                    <Button type="submit" className="btn-glow">Get my Roadmap Preview</Button>
+                <div className="flex flex-col sm:flex-row justify-end gap-4 pt-4 pb-2">
+                    <Button type="button" variant="outline" onClick={onCancel} className="h-12 px-8 glass-morphic">Cancel</Button>
+                    <Button type="submit" size="lg" className="btn-glow px-8 h-12 font-bold tracking-wide">Get my Roadmap Preview</Button>
                 </div>
             </form>
         </Form>
