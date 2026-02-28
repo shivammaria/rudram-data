@@ -54,14 +54,14 @@ export type FormState = {
 
 async function sendEmailNotification({ subject, bodyHtml }: { subject: string, bodyHtml: string }) {
   if (!process.env.RESEND_API_KEY) {
-    console.warn("RESEND_API_KEY is missing. Email skipped. Content:", bodyHtml);
+    console.warn("RESEND_API_KEY is missing. Check your Vercel/Local Environment Variables.");
     return true; // Return true to simulate success in development without a key
   }
 
   try {
     const { data, error } = await resend.emails.send({
-      from: `${settings.appName} <onboarding@resend.dev>`, // Note: Replace with your verified domain in production
-      to: [teamContacts.email],
+      from: `${settings.appName} <onboarding@resend.dev>`, 
+      to: [teamContacts.email], // This is info@rudramdata.com
       subject: subject,
       html: bodyHtml,
     });
@@ -114,7 +114,7 @@ export async function submitHealthCheck(prevState: any, formData: FormData): Pro
   });
 
   return { 
-    message: success ? "Success! We'll be in touch shortly." : "We've noted your request, but our email notification failed. We will check our logs.", 
+    message: success ? "Success! We'll be in touch shortly." : "We've noted your request, but our email notification failed.", 
     success: true 
   };
 }
