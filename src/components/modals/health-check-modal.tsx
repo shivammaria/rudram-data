@@ -144,8 +144,8 @@ export function HealthCheckModal({ children, defaultServiceId }: { children: Rea
                         <DialogTitle className="text-2xl md:text-3xl font-bold text-primary text-glow leading-tight">{title}</DialogTitle>
                         <DialogDescription className="text-muted-foreground mt-2 leading-relaxed">{description}</DialogDescription>
                     </DialogHeader>
-                    <ScrollArea className="flex-grow px-6">
-                       <div className="py-8 pr-2">
+                    <ScrollArea className="flex-grow">
+                       <div className="p-6 md:p-8 space-y-6">
                            {renderContent()}
                        </div>
                     </ScrollArea>

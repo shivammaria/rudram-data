@@ -46,9 +46,7 @@ const logos: { [key: string]: React.ReactNode } = {
 const PartnerCard = ({ partner }: { partner: typeof content.partners[0] }) => (
     <Card className="glass-morphic card-glow border-primary/20 flex flex-col items-center p-8 text-center h-full transition-all duration-300 ease-in-out hover:-translate-y-2">
         <CardHeader className="p-0 mb-8 items-center w-full">
-            {/* Added a solid white background and rounded corners to the logo container 
-                to cleanly frame logos that might have non-transparent backgrounds */}
-            <div className="h-24 w-full flex items-center justify-center bg-white rounded-xl p-4 shadow-sm">
+            <div className="h-24 w-full flex items-center justify-center bg-white rounded-xl p-4 shadow-sm overflow-hidden">
                 {logos[partner.logo]}
             </div>
         </CardHeader>

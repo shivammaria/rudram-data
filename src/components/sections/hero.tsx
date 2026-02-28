@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
@@ -77,11 +78,11 @@ export default function HeroSection() {
     }
 
     return (
-      <StartJourneyModal>
+      <Link href="#path">
         <Button size="lg" variant="outline" className="text-lg px-8 py-6 glass-morphic border-white/50 hover:border-white text-white hover:bg-black/80 hover:text-white">
           {currentSlideContent?.cta.secondary.text || "See How It Works"}
         </Button>
-      </StartJourneyModal>
+      </Link>
     );
   };
 
