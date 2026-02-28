@@ -3,9 +3,9 @@
   "headline": "Companies we have worked for",
   "clients": [
     { "name": "Gunit", "logo": "/images/gunit.png" },
-    { "name": "Infrawa", "logo": "/images/infrawa.png" },
-    { "name": "MinRes", "logo": "/images/minres.png" },
-    { "name": "Mitsui", "logo": "/images/mitsui.png" },
+    { "name": "Infrawa", "logo": "/images/Infrawa.png" },
+    { "name": "MinRes", "logo": "/images/Minres.png" },
+    { "name": "Mitsui", "logo": "/images/Mitsui.png" },
     { "name": "Thinkdone", "logo": "/images/thinkdone.png" }
   ]
 }
