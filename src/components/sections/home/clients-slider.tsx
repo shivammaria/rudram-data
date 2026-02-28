@@ -3,7 +3,7 @@
 
 import * as React from "react";
 import Image from "next/image";
-import Autoplay from "embla-carousel-autoplay";
+import AutoScroll from "embla-carousel-auto-scroll";
 import {
   Carousel,
   CarouselContent,
@@ -12,8 +12,13 @@ import {
 import content from "@/app/content/clients.json";
 
 export default function ClientsSlider() {
+  // Use AutoScroll for a continuous, non-stop marquee effect
   const plugin = React.useRef(
-    Autoplay({ delay: 3500, stopOnInteraction: false, stopOnMouseEnter: false })
+    AutoScroll({ 
+      speed: 1, 
+      stopOnInteraction: false, 
+      stopOnMouseEnter: false 
+    })
   );
 
   return (
@@ -25,7 +30,7 @@ export default function ClientsSlider() {
         
         {/* Wrapper for the blur/mask effect */}
         <div className="relative w-full max-w-5xl mx-auto">
-          {/* Blur Overlays */}
+          {/* Blur Overlays for premium look */}
           <div className="absolute left-0 top-0 bottom-0 w-24 z-20 bg-gradient-to-r from-background via-background/80 to-transparent pointer-events-none hidden sm:block" />
           <div className="absolute right-0 top-0 bottom-0 w-24 z-20 bg-gradient-to-l from-background via-background/80 to-transparent pointer-events-none hidden sm:block" />
           
@@ -33,14 +38,14 @@ export default function ClientsSlider() {
             plugins={[plugin.current]}
             className="w-full"
             opts={{
-              align: "center",
+              align: "start",
               loop: true,
-              skipSnaps: false,
-              duration: 40, // Smoother transition
+              dragFree: true, // Required for smooth AutoScroll
             }}
           >
             <CarouselContent className="-ml-4 md:-ml-8">
-              {content.clients.map((client, index) => (
+              {/* Duplicate the list to ensure a truly seamless loop if the count is small */}
+              {[...content.clients, ...content.clients].map((client, index) => (
                 <CarouselItem key={index} className="pl-4 md:pl-8 basis-1/2">
                   <div className="p-2 md:p-4">
                     <div className="relative w-full h-48 md:h-64 bg-white rounded-3xl shadow-2xl border-2 border-primary/10 overflow-hidden flex items-center justify-center p-10 hover:shadow-primary/20 hover:border-primary/40 transition-all duration-500 group">
