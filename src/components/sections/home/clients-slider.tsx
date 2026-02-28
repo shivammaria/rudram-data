@@ -23,14 +23,14 @@ export default function ClientsSlider() {
   return (
     <section id="clients" className="w-full py-16 lg:py-24 bg-background overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
-        <h2 className="text-center text-2xl md:text-4xl font-bold mb-12 text-foreground tracking-tight text-glow">
+        <h2 className="text-center text-3xl md:text-5xl font-bold mb-16 text-foreground tracking-tighter text-glow bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70">
           {content.headline}
         </h2>
         
         <div className="relative w-full max-w-6xl mx-auto">
-          {/* Professional Blur/Fade Overlays */}
-          <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 z-20 bg-gradient-to-r from-background via-background/60 to-transparent pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 z-20 bg-gradient-to-l from-background via-background/60 to-transparent pointer-events-none" />
+          {/* Professional Fade Overlays */}
+          <div className="absolute left-0 top-0 bottom-0 w-24 md:w-48 z-20 bg-gradient-to-r from-background via-background/60 to-transparent pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-24 md:w-48 z-20 bg-gradient-to-l from-background via-background/60 to-transparent pointer-events-none" />
           
           <Carousel
             plugins={[plugin.current]}
@@ -44,16 +44,16 @@ export default function ClientsSlider() {
             <CarouselContent className="-ml-4">
               {[...content.clients, ...content.clients].map((client, index) => (
                 <CarouselItem key={index} className="pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
-                  <div className="p-2">
-                    <div className="relative w-full h-32 md:h-36 bg-white rounded-2xl shadow-md border border-primary/5 overflow-hidden flex items-center justify-center p-6 hover:shadow-primary/10 hover:border-primary/20 transition-all duration-300 group">
+                  <div className="p-3">
+                    <div className="relative w-full h-32 md:h-36 bg-white rounded-xl shadow-lg border border-white/10 overflow-hidden flex items-center justify-center p-6 hover:scale-105 transition-transform duration-500 group">
                       <div className="relative w-full h-full">
                         <Image
                           src={client.logo}
                           alt={`${client.name} logo`}
                           fill
-                          className="object-contain transition-transform duration-500 group-hover:scale-105"
+                          className="object-contain"
                           sizes="(max-width: 768px) 50vw, 20vw"
-                          priority={index < 6}
+                          priority={index < 8}
                           unoptimized
                         />
                       </div>
