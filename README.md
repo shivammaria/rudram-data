@@ -7,13 +7,12 @@ Next.js Server Actions handle all form logic directly on Vercel's backend. No se
 
 ### 1. Setting up Email (Resend)
 We use [Resend](https://resend.com/) for reliable email delivery to your Google Workspace (info@rudramdata.com).
-1. Create a free account at [resend.com](https://resend.com/).
-2. Grab your **API Key** (e.g., `re_Sapgnzg3_14WL3AawRv8aASLcXLo5TgQq`).
-3. In your Vercel Dashboard, go to **Settings > Environment Variables**.
-4. Add a new variable:
+1. Your **API Key** is: `re_Sapgnzg3_14WL3AawRv8aASLcXLo5TgQq`
+2. In your Vercel Dashboard, go to **Settings > Environment Variables**.
+3. Add a new variable:
    - **Key:** `RESEND_API_KEY`
    - **Value:** `re_Sapgnzg3_14WL3AawRv8aASLcXLo5TgQq`
-5. **(Important)** Verify your domain `rudramdata.com` in Resend settings to send emails *from* your professional address instead of the default `onboarding@resend.dev`.
+4. **(Important)** Verify your domain `rudramdata.com` in Resend settings to send emails *from* your professional address instead of the default `onboarding@resend.dev`.
 
 ### 2. Repository Migration
 To point this project to a new Git repository:

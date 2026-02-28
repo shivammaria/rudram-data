@@ -3,10 +3,8 @@
 import { z } from 'zod';
 import { Resend } from 'resend';
 import teamContacts from './content/team-contacts.json';
-import settings from './content/settings.json';
 
 // Initialize Resend with the API key from environment variables
-// Ensure you add RESEND_API_KEY to your Vercel Environment Variables
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 // --- Schemas ---
