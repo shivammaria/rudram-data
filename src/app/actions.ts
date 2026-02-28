@@ -6,6 +6,7 @@ import teamContacts from './content/team-contacts.json';
 import settings from './content/settings.json';
 
 // Initialize Resend with the API key from environment variables
+// Ensure you add RESEND_API_KEY to your Vercel Environment Variables
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 // --- Schemas ---
@@ -54,26 +55,26 @@ export type FormState = {
 
 async function sendEmailNotification({ subject, bodyHtml }: { subject: string, bodyHtml: string }) {
   if (!process.env.RESEND_API_KEY) {
-    console.warn("RESEND_API_KEY is missing. Check your Vercel/Local Environment Variables.");
-    return true; // Return true to simulate success in development without a key
+    console.error("RESEND_API_KEY is missing. Emails will not be sent.");
+    return false;
   }
 
   try {
     const { data, error } = await resend.emails.send({
-      from: `${settings.appName} <onboarding@resend.dev>`, 
-      to: [teamContacts.email], // This is info@rudramdata.com
+      from: 'Rudram <onboarding@resend.dev>', 
+      to: [teamContacts.email], // This sends to info@rudramdata.com
       subject: subject,
       html: bodyHtml,
     });
 
     if (error) {
-      console.error("Resend error:", error);
+      console.error("Resend delivery error:", error);
       return false;
     }
 
     return true;
   } catch (err) {
-    console.error("Failed to send email:", err);
+    console.error("Critical email failure:", err);
     return false;
   }
 }
@@ -100,22 +101,23 @@ export async function submitHealthCheck(prevState: any, formData: FormData): Pro
   const success = await sendEmailNotification({
     subject: `[Health Check] ${validated.data.company} - ${validated.data.name}`,
     bodyHtml: `
-      <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
-        <h2 style="color: #f59e0b;">New Data Health Check Request</h2>
+      <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 10px; max-width: 600px;">
+        <h2 style="color: #f59e0b; border-bottom: 2px solid #f59e0b; padding-bottom: 10px;">New Data Health Check Request</h2>
         <p><strong>Name:</strong> ${validated.data.name}</p>
         <p><strong>Email:</strong> ${validated.data.email}</p>
         <p><strong>Company:</strong> ${validated.data.company}</p>
         <p><strong>Business Size:</strong> ${validated.data.businessSize}</p>
         <p><strong>Service:</strong> ${validated.data.serviceId}</p>
         <p><strong>Preferred Channel:</strong> ${validated.data.contactChannel}</p>
-        <p><strong>Message:</strong> ${validated.data.message || 'No additional message.'}</p>
+        <p><strong>Message:</strong></p>
+        <p style="background: #f9f9f9; padding: 15px; border-radius: 5px;">${validated.data.message || 'No additional message.'}</p>
       </div>
     `,
   });
 
   return { 
-    message: success ? "Success! We'll be in touch shortly." : "We've noted your request, but our email notification failed.", 
-    success: true 
+    message: success ? "Success! We'll be in touch shortly." : "We've noted your request, but our email notification failed. Please contact us directly.", 
+    success: success 
   };
 }
 
@@ -134,19 +136,19 @@ export async function submitContactForm(prevState: any, formData: FormData): Pro
   const success = await sendEmailNotification({
     subject: `[Contact Inquiry] From ${validated.data.name}`,
     bodyHtml: `
-      <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
-        <h2 style="color: #f59e0b;">New General Inquiry</h2>
+      <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 10px; max-width: 600px;">
+        <h2 style="color: #f59e0b; border-bottom: 2px solid #f59e0b; padding-bottom: 10px;">New General Inquiry</h2>
         <p><strong>Name:</strong> ${validated.data.name}</p>
         <p><strong>Email:</strong> ${validated.data.email}</p>
         <p><strong>Company:</strong> ${validated.data.company}</p>
-        <hr />
+        <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;" />
         <p><strong>Message:</strong></p>
-        <p style="white-space: pre-wrap;">${validated.data.message}</p>
+        <p style="white-space: pre-wrap; background: #f9f9f9; padding: 15px; border-radius: 5px;">${validated.data.message}</p>
       </div>
     `,
   });
 
-  return { message: success ? "Message sent successfully!" : "Error sending message.", success: true };
+  return { message: success ? "Message sent successfully!" : "Error sending message. Please try again later.", success: success };
 }
 
 export async function submitStartJourney(data: any): Promise<FormState> {
@@ -160,17 +162,18 @@ export async function submitStartJourney(data: any): Promise<FormState> {
   const success = await sendEmailNotification({
     subject: `[Journey Started] ${validated.data.company}`,
     bodyHtml: `
-      <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
-        <h2 style="color: #f59e0b;">Path to Clarity: New Journey</h2>
+      <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 10px; max-width: 600px;">
+        <h2 style="color: #f59e0b; border-bottom: 2px solid #f59e0b; padding-bottom: 10px;">Path to Clarity: New Journey</h2>
         <p><strong>Client:</strong> ${validated.data.name} (${validated.data.company})</p>
         <p><strong>Email:</strong> ${validated.data.email}</p>
         <p><strong>Areas of Interest:</strong> ${validated.data.exploringAreas}</p>
-        <p><strong>Business Goal:</strong> ${validated.data.goal}</p>
+        <p><strong>Business Goal:</strong></p>
+        <p style="background: #f9f9f9; padding: 15px; border-radius: 5px;">${validated.data.goal}</p>
       </div>
     `,
   });
 
-  return { message: "Journey started! Check your email for updates.", success: true };
+  return { message: success ? "Journey started! Check your email for updates." : "Request received, but notification failed.", success: success };
 }
 
 export async function submitDemoRequest(data: any): Promise<FormState> {
@@ -180,8 +183,8 @@ export async function submitDemoRequest(data: any): Promise<FormState> {
   const success = await sendEmailNotification({
     subject: `[Demo Request] ${validated.data.demoType} - ${validated.data.company}`,
     bodyHtml: `
-      <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
-        <h2 style="color: #f59e0b;">Demo Requested</h2>
+      <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 10px; max-width: 600px;">
+        <h2 style="color: #f59e0b; border-bottom: 2px solid #f59e0b; padding-bottom: 10px;">Demo Requested</h2>
         <p><strong>Name:</strong> ${validated.data.name}</p>
         <p><strong>Email:</strong> ${validated.data.email}</p>
         <p><strong>Company:</strong> ${validated.data.company}</p>
@@ -190,5 +193,5 @@ export async function submitDemoRequest(data: any): Promise<FormState> {
     `,
   });
 
-  return { message: "Demo request received! We'll send the link to your inbox.", success: true };
+  return { message: success ? "Demo request received! We'll send the link to your inbox." : "Demo request noted, but notification failed.", success: success };
 }
