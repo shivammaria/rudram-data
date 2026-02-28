@@ -12,22 +12,29 @@ This is the NextJS-based digital presence for Rudram Data Solutions, built with 
 ## Repository Migration
 To point this project to a new Git repository, follow these steps in your terminal:
 
-1. **Remove old remote:**
-   ```bash
-   git remote remove origin
-   ```
-
-2. **Add new remote:**
-   ```bash
-   git remote add origin <YOUR_NEW_REPO_URL>
-   ```
-
-3. **Verify:**
+1. **Check if origin exists:**
    ```bash
    git remote -v
    ```
 
-4. **Push code:**
+2. **Remove old remote (only if it exists):**
+   If you see an existing "origin", run:
+   ```bash
+   git remote remove origin
+   ```
+   *Note: If it says "no such remote origin", you can safely skip this step.*
+
+3. **Add new remote:**
+   ```bash
+   git remote add origin <YOUR_NEW_REPO_URL>
+   ```
+
+4. **Verify connection:**
+   ```bash
+   git remote -v
+   ```
+
+5. **Push code:**
    ```bash
    git push -u origin main
    ```
